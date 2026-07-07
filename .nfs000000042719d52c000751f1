@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 # Simple script to add a new palette to palettes.R, palettes.py, palettes.json, and README.md
-# Generates SVG swatches and stores them in the swatches/ folder
 # 
 # Usage:
 #   source("add_palette.R")
@@ -10,48 +9,48 @@
 
 library(jsonlite)
 
-# Function to generate and save SVG swatches
-generate_and_save_svg <- function(palette_name, colors) {
+# Function to generate SVG swatches for the README
+generate_svg_swatches <- function(palette_name, colors) {
   n_colors <- length(colors)
   
   # Determine swatch size and spacing
-  swatch_width <- 50
-  swatch_height <- 50
-  spacing <- 60
-  text_y_offset <- 65
+  if (n_colors <= 5) {
+    swatch_width <- 50
+    swatch_height <- 50
+    spacing <- 60
+    text_y_offset <- 65
+  } else if (n_colors <= 9) {
+    swatch_width <- 50
+    swatch_height <- 50
+    spacing <- 60
+    text_y_offset <- 65
+  } else {
+    swatch_width <- 40
+    swatch_height <- 40
+    spacing <- 50
+    text_y_offset <- 55
+  }
   
-  total_width <- n_colors * spacing + 20
-  total_height <- 100
+  total_width <- n_colors * spacing
+  svg_start <- sprintf('<svg width="%d" height="80" xmlns="http://www.w3.org/2000/svg">', total_width)
   
-  svg_lines <- c(
-    sprintf('<?xml version="1.0" encoding="UTF-8"?>'),
-    sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', total_width, total_height)
-  )
-  
+  svg_rects <- character(n_colors)
   for (i in seq_along(colors)) {
-    x_pos <- 10 + (i - 1) * spacing
+    x_pos <- (i - 1) * spacing
     label <- names(colors)[i]
     hex_val <- unlist(colors)[i]
     
-    svg_lines <- c(svg_lines,
-      sprintf('  <rect x="%d" y="10" width="%d" height="%d" fill="%s" stroke="#ddd" stroke-width="1"/>', 
-              x_pos, swatch_width, swatch_height, hex_val),
-      sprintf('  <text x="%d" y="%d" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">%s</text>',
-              x_pos + swatch_width / 2, text_y_offset + 10, label)
+    svg_rects[i] <- sprintf(
+      '  <rect x="%d" y="0" width="%d" height="%d" fill="%s" stroke="#ddd" stroke-width="1"/>\n  <text x="%d" y="%d" text-anchor="middle" font-size="11" font-family="monospace">%s</text>',
+      x_pos, swatch_width, swatch_height, hex_val,
+      x_pos + swatch_width / 2, text_y_offset, label
     )
   }
   
-  svg_lines <- c(svg_lines, '</svg>')
+  svg_end <- '</svg>'
   
-  # Save to swatches folder
-  if (!dir.exists("swatches")) {
-    dir.create("swatches")
-  }
-  
-  filename <- sprintf("swatches/%s.svg", palette_name)
-  writeLines(svg_lines, filename)
-  
-  return(filename)
+  svg_code <- paste(c(svg_start, svg_rects, svg_end), collapse = "\n")
+  return(svg_code)
 }
 
 # Prompt user for palette details
@@ -115,9 +114,9 @@ py_code <- paste0(
   ",\n}"
 )
 
-# Generate and save SVG file, then create README section
-svg_file <- generate_and_save_svg(palette_name, colors)
-readme_section <- sprintf("### `%s`\n![%s](%s)", palette_name, palette_name, svg_file)
+# Generate SVG for README
+svg_code <- generate_svg_swatches(palette_name, colors)
+readme_section <- sprintf("### `%s`\n%s", palette_name, svg_code)
 
 # Add to files
 cat("\n--- Adding to files ---\n")
