@@ -5,7 +5,17 @@ static files — copy-paste or source directly, no build step, no dependencies.
 
 ## Preview
 
-Open **`preview.html`** in a browser to see all palettes with swatches. Click any swatch to copy the hex code.
+To view the palette swatches, run a local HTTP server in this folder:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000` in your browser and click `preview.html`. 
+
+(You can't open the HTML file directly as `file://` due to browser security — it needs to be served over HTTP.)
+
+Alternatively, if you use VS Code, install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension and right-click → "Open with Live Server".
 
 ## Files
 
