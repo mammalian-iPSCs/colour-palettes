@@ -14,6 +14,10 @@ static files — copy-paste or source directly, no build step, no dependencies.
 ### `class_col`
 ![class_col](swatches/class_col.svg)
 
+
+### `assembly_levels_cols`
+![assembly_levels_cols](swatches/assembly_levels_cols.svg)
+
 ## Files
 
 - `palettes.R` — named vectors for R

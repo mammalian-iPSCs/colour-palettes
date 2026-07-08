@@ -33,3 +33,11 @@ class_col = {
     "Birds": "#631879FF",
     "Mammalia": "#008280FF",
 }
+
+assembly_levels_cols = {
+    "Complete Genome": "#1B7837",
+    "Chromosome": "#5AAE61",
+    "Scaffold": "#ACD39E",
+    "Contig": "#E7D4C0",
+    "No Genome": "#B0B0B0",
+}
