@@ -24,17 +24,7 @@ generate_and_save_svg <- function(palette_name, colors) {
 
   labels <- names(colors)
   hex_vals <- unlist(colors)
-
-  # Pick readable text colour: dark grey by default, white only when the
-  # swatch itself is (near-)black and dark text would be illegible
-  text_colour_for <- function(hex) {
-    hex <- sub("^#", "", hex)
-    r <- strtoi(substr(hex, 1, 2), 16L)
-    g <- strtoi(substr(hex, 3, 4), 16L)
-    b <- strtoi(substr(hex, 5, 6), 16L)
-    luminance <- 0.299 * r + 0.587 * g + 0.114 * b
-    if (luminance < 40) "#ffffff" else "#333333"
-  }
+  text_colour <- "#333333"
 
   # Give each swatch enough width for its own label so long names don't overlap
   slot_widths <- pmax(min_slot_width, nchar(labels) * char_width + gap)
@@ -45,13 +35,12 @@ generate_and_save_svg <- function(palette_name, colors) {
     slot_width <- slot_widths[i]
     rect_x <- x_pos + (slot_width - swatch_width) / 2
     text_x <- x_pos + slot_width / 2
-    fill_colour <- text_colour_for(hex_vals[i])
 
     body_lines <- c(body_lines,
       sprintf('  <rect x="%.1f" y="%d" width="%d" height="%d" fill="%s" stroke="#ddd" stroke-width="1"/>',
               rect_x, swatch_y, swatch_width, swatch_height, hex_vals[i]),
       sprintf('  <text x="%.1f" y="%d" text-anchor="middle" font-size="%d" font-family="monospace" fill="%s">%s</text>',
-              text_x, text_y, font_size, fill_colour, labels[i])
+              text_x, text_y, font_size, text_colour, labels[i])
     )
 
     x_pos <- x_pos + slot_width + gap

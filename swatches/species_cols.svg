@@ -5,7 +5,7 @@
   <rect x="143.0" y="10" width="50" height="50" fill="#51485E" stroke="#ddd" stroke-width="1"/>
   <text x="168.0" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Pan troglodytes</text>
   <rect x="265.3" y="10" width="50" height="50" fill="#023047" stroke="#ddd" stroke-width="1"/>
-  <text x="290.3" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#ffffff">Gorilla gorilla</text>
+  <text x="290.3" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Gorilla gorilla</text>
   <rect x="384.2" y="10" width="50" height="50" fill="#fb8500" stroke="#ddd" stroke-width="1"/>
   <text x="409.2" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Pongo pygmaeus</text>
   <rect x="523.5" y="10" width="50" height="50" fill="#8ecae6" stroke="#ddd" stroke-width="1"/>
