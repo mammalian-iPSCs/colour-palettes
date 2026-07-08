@@ -12,45 +12,69 @@ library(jsonlite)
 
 # Function to generate and save SVG swatches
 generate_and_save_svg <- function(palette_name, colors) {
-  n_colors <- length(colors)
-  
-  # Determine swatch size and spacing
+  # Determine swatch size and layout
   swatch_width <- 50
   swatch_height <- 50
-  spacing <- 60
-  text_y_offset <- 65
-  
-  total_width <- n_colors * spacing + 20
-  total_height <- 100
-  
-  svg_lines <- c(
-    sprintf('<?xml version="1.0" encoding="UTF-8"?>'),
-    sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', total_width, total_height)
-  )
-  
-  for (i in seq_along(colors)) {
-    x_pos <- 10 + (i - 1) * spacing
-    label <- names(colors)[i]
-    hex_val <- unlist(colors)[i]
-    
-    svg_lines <- c(svg_lines,
-      sprintf('  <rect x="%d" y="10" width="%d" height="%d" fill="%s" stroke="#ddd" stroke-width="1"/>', 
-              x_pos, swatch_width, swatch_height, hex_val),
-      sprintf('  <text x="%d" y="%d" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">%s</text>',
-              x_pos + swatch_width / 2, text_y_offset + 10, label)
-    )
+  swatch_y <- 10
+  text_y <- 75
+  font_size <- 11
+  char_width <- font_size * 0.62  # approx monospace glyph width
+  min_slot_width <- 60
+  gap <- 10
+
+  labels <- names(colors)
+  hex_vals <- unlist(colors)
+
+  # Pick readable text colour: dark grey by default, white only when the
+  # swatch itself is (near-)black and dark text would be illegible
+  text_colour_for <- function(hex) {
+    hex <- sub("^#", "", hex)
+    r <- strtoi(substr(hex, 1, 2), 16L)
+    g <- strtoi(substr(hex, 3, 4), 16L)
+    b <- strtoi(substr(hex, 5, 6), 16L)
+    luminance <- 0.299 * r + 0.587 * g + 0.114 * b
+    if (luminance < 40) "#ffffff" else "#333333"
   }
-  
-  svg_lines <- c(svg_lines, '</svg>')
-  
+
+  # Give each swatch enough width for its own label so long names don't overlap
+  slot_widths <- pmax(min_slot_width, nchar(labels) * char_width + gap)
+
+  body_lines <- character(0)
+  x_pos <- 10
+  for (i in seq_along(labels)) {
+    slot_width <- slot_widths[i]
+    rect_x <- x_pos + (slot_width - swatch_width) / 2
+    text_x <- x_pos + slot_width / 2
+    fill_colour <- text_colour_for(hex_vals[i])
+
+    body_lines <- c(body_lines,
+      sprintf('  <rect x="%.1f" y="%d" width="%d" height="%d" fill="%s" stroke="#ddd" stroke-width="1"/>',
+              rect_x, swatch_y, swatch_width, swatch_height, hex_vals[i]),
+      sprintf('  <text x="%.1f" y="%d" text-anchor="middle" font-size="%d" font-family="monospace" fill="%s">%s</text>',
+              text_x, text_y, font_size, fill_colour, labels[i])
+    )
+
+    x_pos <- x_pos + slot_width + gap
+  }
+
+  total_width <- round(x_pos)
+  total_height <- 100
+
+  svg_lines <- c(
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    sprintf('<svg width="%d" height="%d" xmlns="http://www.w3.org/2000/svg">', total_width, total_height),
+    body_lines,
+    '</svg>'
+  )
+
   # Save to swatches folder
   if (!dir.exists("swatches")) {
     dir.create("swatches")
   }
-  
+
   filename <- sprintf("swatches/%s.svg", palette_name)
   writeLines(svg_lines, filename)
-  
+
   return(filename)
 }
 

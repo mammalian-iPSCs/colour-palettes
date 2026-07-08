@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="320" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="50" height="50" fill="#1B7837" stroke="#ddd" stroke-width="1"/>
-  <text x="35" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">Complete Genome</text>
-  <rect x="70" y="10" width="50" height="50" fill="#5AAE61" stroke="#ddd" stroke-width="1"/>
-  <text x="95" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">Chromosome</text>
-  <rect x="130" y="10" width="50" height="50" fill="#ACD39E" stroke="#ddd" stroke-width="1"/>
-  <text x="155" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">Scaffold</text>
-  <rect x="190" y="10" width="50" height="50" fill="#E7D4C0" stroke="#ddd" stroke-width="1"/>
-  <text x="215" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">Contig</text>
-  <rect x="250" y="10" width="50" height="50" fill="#B0B0B0" stroke="#ddd" stroke-width="1"/>
-  <text x="275" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">No Genome</text>
+<svg width="446" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="41.2" y="10" width="50" height="50" fill="#1B7837" stroke="#ddd" stroke-width="1"/>
+  <text x="66.2" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Complete Genome</text>
+  <rect x="146.4" y="10" width="50" height="50" fill="#5AAE61" stroke="#ddd" stroke-width="1"/>
+  <text x="171.4" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Chromosome</text>
+  <rect x="227.8" y="10" width="50" height="50" fill="#ACD39E" stroke="#ddd" stroke-width="1"/>
+  <text x="252.8" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Scaffold</text>
+  <rect x="300.1" y="10" width="50" height="50" fill="#E7D4C0" stroke="#ddd" stroke-width="1"/>
+  <text x="325.1" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Contig</text>
+  <rect x="375.8" y="10" width="50" height="50" fill="#B0B0B0" stroke="#ddd" stroke-width="1"/>
+  <text x="400.8" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">No Genome</text>
 </svg>

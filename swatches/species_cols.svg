@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="440" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="50" height="50" fill="#219ebc" stroke="#ddd" stroke-width="1"/>
-  <text x="35" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">H. sapiens</text>
-  
-  <rect x="70" y="10" width="50" height="50" fill="#51485E" stroke="#ddd" stroke-width="1"/>
-  <text x="95" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">P. troglodytes</text>
-  
-  <rect x="130" y="10" width="50" height="50" fill="#023047" stroke="#ddd" stroke-width="1"/>
-  <text x="155" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">G. gorilla</text>
-  
-  <rect x="190" y="10" width="50" height="50" fill="#fb8500" stroke="#ddd" stroke-width="1"/>
-  <text x="215" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">P. pygmaeus</text>
-  
-  <rect x="250" y="10" width="50" height="50" fill="#8ecae6" stroke="#ddd" stroke-width="1"/>
-  <text x="275" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">M. ogouensis</text>
-  
-  <rect x="310" y="10" width="50" height="50" fill="#ffb703" stroke="#ddd" stroke-width="1"/>
-  <text x="335" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">M. sphinx</text>
-  
-  <rect x="370" y="10" width="50" height="50" fill="#6a994e" stroke="#ddd" stroke-width="1"/>
-  <text x="395" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333">A. hybridus</text>
+<svg width="893" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30.9" y="10" width="50" height="50" fill="#219ebc" stroke="#ddd" stroke-width="1"/>
+  <text x="55.9" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Homo sapiens</text>
+  <rect x="143.0" y="10" width="50" height="50" fill="#51485E" stroke="#ddd" stroke-width="1"/>
+  <text x="168.0" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Pan troglodytes</text>
+  <rect x="265.3" y="10" width="50" height="50" fill="#023047" stroke="#ddd" stroke-width="1"/>
+  <text x="290.3" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#ffffff">Gorilla gorilla</text>
+  <rect x="384.2" y="10" width="50" height="50" fill="#fb8500" stroke="#ddd" stroke-width="1"/>
+  <text x="409.2" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Pongo pygmaeus</text>
+  <rect x="523.5" y="10" width="50" height="50" fill="#8ecae6" stroke="#ddd" stroke-width="1"/>
+  <text x="548.5" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Miopithecus ogouensis</text>
+  <rect x="673.1" y="10" width="50" height="50" fill="#ffb703" stroke="#ddd" stroke-width="1"/>
+  <text x="698.1" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Mandrillus sphinx</text>
+  <rect x="802.2" y="10" width="50" height="50" fill="#6a994e" stroke="#ddd" stroke-width="1"/>
+  <text x="827.2" y="75" text-anchor="middle" font-size="11" font-family="monospace" fill="#333333">Ateles hybridus</text>
 </svg>
