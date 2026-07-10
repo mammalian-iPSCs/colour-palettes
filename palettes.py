@@ -41,3 +41,11 @@ assembly_levels_cols = {
     "Contig": "#E7D4C0",
     "No Genome": "#B0B0B0",
 }
+
+seq_type_cols = {
+    "WG-Seq": "#023e8a",
+    "WG-Nanopore": "#48cae4",
+    "RNA-seq": "#e76f51",
+    "ATAC-seq": "#7209b7",
+    "EM-seq": "#40916c",
+}
